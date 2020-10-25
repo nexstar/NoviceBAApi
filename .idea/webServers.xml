@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b764b117-8418-47c0-ae46-710f85891fe3" name="NoviceBAApi" url="http://203.79.167.215">
+        <fileTransfer host="203.79.167.215" port="22" rootFolder="/home/ubuntu/Container/NoviceBA/NoviceBALaravelApi/NoviceBAApi" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Taipei',
 
     /*
     |--------------------------------------------------------------------------
@@ -165,7 +165,8 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Ixudra\Curl\CurlServiceProvider::class,
+        Sujip\Guid\GuidServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -189,6 +190,8 @@ return [
     */
 
     'aliases' => [
+        'Curl' => Ixudra\Curl\Facades\Curl::class,
+        'Guid' => Sujip\Guid\Guid::class,
 
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,

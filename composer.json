@@ -13,7 +13,12 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.24",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "ext-pdo": "*",
+        "ixudra/curl": "6.*",
+        "ext-json": "*",
+        "sudiptpa/guid": "^1.0",
+        "ext-curl": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

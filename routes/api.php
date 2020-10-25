@@ -5,15 +5,28 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| Spider StockDay
 |--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'SpiderStockDay'], function () {
+
+    // /api/SpiderStockDay/History?CodeGuid=&StockNo=&Data=
+    Route::post('History', 'Api\SpiderStockDayController@History')->name('api.WeekInventory.History');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Week Inventory
+|--------------------------------------------------------------------------
+|
+*/
+Route::group(['prefix' => 'WeekInventory'], function () {
+    // /api/WeekInventory/Status?CodeGuid=&Date=
+    Route::get('Status', 'Api\WeekInventoryController@Status')->name('api.WeekInventory.Status');
+
+    // /api/WeekInventory/Insert?CodeGuid=&Date=&Data=
+    Route::post('Insert', 'Api\WeekInventoryController@Insert')->name('api.WeekInventory.Insert');
 });
