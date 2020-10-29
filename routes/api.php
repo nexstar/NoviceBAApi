@@ -5,15 +5,35 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Spider StockDay
+| Stock
 |--------------------------------------------------------------------------
 |
 */
 
-Route::group(['prefix' => 'SpiderStockDay'], function () {
+Route::group(['prefix' => 'ThreeMajor'], function () {
+    // /api/ThreeMajor/History?CodeGuid=&Data=
+    Route::get('History', 'Api\ThreeMajorController@History')->name('api.ThreeMajor.History');
+});
 
-    // /api/SpiderStockDay/History?CodeGuid=&StockNo=&Data=
-    Route::post('History', 'Api\SpiderStockDayController@History')->name('api.WeekInventory.History');
+/*
+|--------------------------------------------------------------------------
+| Stock
+|--------------------------------------------------------------------------
+|
+*/
+
+Route::group(['prefix' => 'StockInfo'], function () {
+    Route::get('End', 'Api\StockInfoController@End')->name('api.StockInfo.End');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Spider StockDay
+|--------------------------------------------------------------------------
+|
+*/
+Route::group(['prefix' => 'SpiderStockDay'], function () {
+    Route::get('History', 'Api\SpiderStockDayController@History')->name('api.WeekInventory.History');
 });
 
 

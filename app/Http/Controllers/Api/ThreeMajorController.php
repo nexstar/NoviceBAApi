@@ -3,26 +3,25 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Service\Info\EveryDayPriceDateService;
-use App\Service\Log\lEveryDayPriceService;
+use App\Service\Info\ThreeMajorDateService;
+use App\Service\Log\lThreeMajorPriceService;
 use App\Tool\ResponseService;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Log;
 
-class SpiderStockDayController extends Controller
+class ThreeMajorController extends Controller
 {
 
-    private $EveryDayPriceDateService;
-    private $lEveryDayPriceService;
     private $ResponseService;
+    private $ThreeMajorDateService;
+    private $lThreeMajorPriceService;
 
     public function __construct()
     {
-        $this->EveryDayPriceDateService = new EveryDayPriceDateService();
-        $this->lEveryDayPriceService = new lEveryDayPriceService();
+        $this->ThreeMajorDateService = new ThreeMajorDateService();
+        $this->lThreeMajorPriceService = new lThreeMajorPriceService();
         $this->ResponseService = new ResponseService();
     }
 
@@ -39,27 +38,27 @@ class SpiderStockDayController extends Controller
             return $this->ResponseService->HTTP_BAD_REQUEST('Error Request');
         }
 
-        $GetDateByData = date('Ymd', $Data['Date']);
-        $EveryDayPriceDate = $this->EveryDayPriceDateService->GetInfoByWhere([
+        $GetDateByData = str_replace('/','',$Data['Date']);
+        $EveryDayPriceDate = $this->ThreeMajorDateService->GetInfoByWhere([
             ['CodeGuid', '=', $CodeGuid],
             ['Date', '=', $GetDateByData]
         ]);
 
         if ($EveryDayPriceDate->isEmpty()) {
-            $this->EveryDayPriceDateService->create([
+            $this->ThreeMajorDateService->create([
                 'Guid' => guid()
                 , 'CodeGuid' => $CodeGuid
                 , 'Date' => $GetDateByData
             ]);
         }
 
-        $lEveryDayPrice = $this->lEveryDayPriceService->GetInfoByWhere([
+        $lEveryDayPrice = $this->lThreeMajorPriceService->GetInfoByWhere([
             ['CodeGuid', '=', $CodeGuid],
             ['Date', '=', $GetDateByData]
         ]);
 
         if ($lEveryDayPrice->isEmpty()) {
-            $this->lEveryDayPriceService->create([
+            $this->lThreeMajorPriceService->create([
                 'Guid' => guid()
                 , 'CodeGuid' => $CodeGuid
                 , 'Date' => $GetDateByData
@@ -69,5 +68,4 @@ class SpiderStockDayController extends Controller
 
         return $this->ResponseService->JSON_HTTP_OK('ok');
     }
-
 }

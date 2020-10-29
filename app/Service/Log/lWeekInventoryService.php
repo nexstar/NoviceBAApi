@@ -21,4 +21,9 @@ class lWeekInventoryService
         $this->lWeekInventoryRepository->create($array);
     }
 
+    public function Delete($Guid)
+    {
+        $this->lWeekInventoryRepository->Delete($Guid);
+    }
+
 }

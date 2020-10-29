@@ -3,6 +3,7 @@
 namespace App\Repository\Info;
 
 use App\Model\Info\EveryDayPriceDate;
+
 class EveryDayPriceDateRepository
 {
 
@@ -26,6 +27,11 @@ class EveryDayPriceDateRepository
     public function create(array $array)
     {
         $this->EveryDayPriceDate::create($array);
+    }
+
+    public function Delete($Guid)
+    {
+        $this->EveryDayPriceDate::where('CodeGuid', $Guid)->delete();
     }
 
 }

@@ -26,4 +26,9 @@ class CodeRepository
         return $this->Code::where($array)->get();
     }
 
+    public function GetInfoByFind($CodeGuid)
+    {
+        return $this->Code::find($CodeGuid);
+    }
+
 }

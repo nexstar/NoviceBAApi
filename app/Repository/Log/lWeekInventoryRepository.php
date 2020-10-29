@@ -21,4 +21,9 @@ class lWeekInventoryRepository
         $this->lWeekInventory::create($array);
     }
 
+    public function Delete($Guid)
+    {
+        $this->lWeekInventory::where('CodeGuid', $Guid)->delete();
+    }
+
 }

@@ -24,4 +24,9 @@ class CodeService
         return $this->CodeRepository->GetInfoByWhere($array);
     }
 
+    public function GetInfoByFind($CodeGuid)
+    {
+        return $this->CodeRepository->GetInfoByFind($CodeGuid);
+    }
+
 }

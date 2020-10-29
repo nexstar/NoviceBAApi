@@ -32,4 +32,9 @@ class EveryDayPriceDateService
         $this->EveryDayPriceDateRepository->create($array);
     }
 
+    public function Delete($Guid)
+    {
+        $this->EveryDayPriceDateRepository->Delete($Guid);
+    }
+
 }
